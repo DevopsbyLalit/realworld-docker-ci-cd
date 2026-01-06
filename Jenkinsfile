@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build & Deploy') {
+            steps {
+                sh '''
+                docker compose down
+                docker compose up --build -d
+                '''
+            }
+        }
+    }
+}
+
