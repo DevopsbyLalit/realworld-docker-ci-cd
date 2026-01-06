@@ -1,8 +1,11 @@
 FROM nginx:alpine
 
-# copy frontend UI (from project root)
-COPY frontend /usr/share/nginx/html
+# REMOVE default nginx config
+RUN rm -f /etc/nginx/conf.d/default.conf
 
-# copy nginx config (from project root)
+# Copy our nginx config
 COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
+# Copy frontend UI
+COPY frontend /usr/share/nginx/html
 
